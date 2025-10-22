@@ -1,0 +1,17 @@
+
+services:
+  postgres:
+    image: postgres:16-bullseye   # 👈 versión estable y compatible
+    platform: linux/amd64         # 👈 fuerza la arquitectura correcta
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB= platzi_play_db
+      - POSTGRES_USER= myuser
+      - POSTGRES_PASSWORD= 1234
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # 👈 ruta corregida
+
+volumes:
+  pgdata:
